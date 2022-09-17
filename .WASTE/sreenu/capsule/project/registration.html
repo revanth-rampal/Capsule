@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="registrationstyle.css">
+  </head>
+  <body>
+    
+    <div class = "about-wrapper">
+      <div class = "about-left">
+        <div class = "about-left-content">
+          <div>
+            <div class = "shadow">
+              <div class = "logo-img">
+                <img src = "RGU.png" alt = "LOGO" class="logo-img">
+              </div>
+            </div>
+            <!--for login-->
+            
+            <div >
+              <div class="input-field">
+              <form action="" id="form">
+              <input class="" placeholder="Username" type="text" id="uname"/>
+              <br/>
+              </div>
+              <div class="input-field">
+                <input placeholder="College ID/Adhar ID" type="text" id="id"/>
+                <br/>
+                </div>
+               <div class="input-field">
+              <input placeholder="Password" type="text" id="password"/>
+              <br/>
+              </div>
+              <div class="input-field">
+                <input placeholder="Confirm Password" type="password" id="confirm_password"/>
+                <br/>
+                </div>
+                <div class="input-field">
+                  <input placeholder="Contact No." type="text" id="contact"/>
+                  <br/>
+                  </div>
+              <br/>
+              <input type="submit" class = "btn btn-white" value="Register"/> </div>
+              <span id="error"></span><br>
+            </form>
+            <script>
+              let form=document.getElementById("form");
+              form.addEventListener("submit",(event)=>{
+	                    event.preventDefault();
+	                    validate();
+	                    });
+              function validate()
+              {
+	              let uname=document.getElementById("uname")
+	              let name=uname.value.trim();
+	              let is_name_valid=true;
+	              let pword=document.getElementById("password")
+	              let password=pword.value.trim();
+	              let is_password_valid=true;
+	              let cword=document.getElementById("confirm_password")
+	              let confirm_password=cword.value.trim();
+	              let is_confirm_password_valid=true;
+
+	              if (password == "")
+	              {
+		              let uerror=document.getElementById("error")
+		              uerror.innerText = "\n Password Can't be Empty \n" ;
+		              is_password_valid=false;
+		              return;
+	              }
+	              if (password.length < 8)
+	              {
+		              let uerror=document.getElementById("error")
+		              uerror.innerText = "\n Password Must be Greater Than 8  \n" ;
+		              is_password_valid=false;
+		              return;
+	              }
+	              if (!/[A-Z]+/.test(name))
+	              {
+		              let uerror=document.getElementById("error")
+		              uerror.innerText = "\n Password Must have a Capital Letter \n" ;
+		              is_password_valid=false;
+		              return;
+	              }
+	              if (!/[a-z]+/.test(name))
+	              {
+		              let uerror=document.getElementById("error")
+		              uerror.innerText = "\n Password Must have a Small Letter \n" ;
+		              is_password_valid=false;
+		              return;
+	              }
+	              if (password != confirm_password)
+	              {
+		              let uerror=document.getElementById("error")
+		              uerror.innerText = "\n Passwords are not Same \n" ;
+		              is_confirm_password_valid=false;
+		              return;
+	              }
+                if (is_name_valid && is_password_valid && is_confirm_password_valid)
+                {
+                  form.submit()
+                }
+              }
+            </script>
+              <!--end -->
+          </div>
+
+          <ul class = "icons"></ul>
+            
+            
+            
+        </div>
+        
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order form</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Order Form</h1>
+      <form action="/">
+        <div class="info">
+          <input class="fname" type="text" name="name" placeholder="Full name">
+          <input type="text" name="name" placeholder="Email">
+          <input type="text" name="name" placeholder="Phone number">
+          <input type="text" name="name" placeholder="Today's date">
+          <input type="text" name="name" placeholder="Order due date">
+          <input type="text" name="name" placeholder="Date of event">
+          <input type="text" name="name" placeholder="Time of event">
+          <input type="text" name="name" placeholder="Event location">
+          <input type="text" name="name" placeholder="Type of event">
+          <select>
+            <option value="number" disabled selected>Number of guests</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+          </select>
+          <select>
+            <option value="time" disabled selected>Pick up time</option>
+            <option value="8">8:00am</option>
+            <option value="9">9:00am</option>
+            <option value="10">10:00am</option>
+            <option value="12">12:00pm</option>
+            <option value="1">1:00pm</option>
+            <option value="3">3:00pm</option>
+            <option value="6">6:00pm</option>
+            <option value="7">7:00pm</option>
+          </select>
+        </div>
+        <h3>Delivry Metod</h3>
+        <div class="metod">
+          <div> 
+            <input type="radio" value="none" id="radioOne" name="metod" checked/>
+            <label for="radioOne" class="radio">For pick up</label>
+          </div>
+          <div>
+            <input type="radio" value="none" id="radioTwo" name="metod" />
+            <label for="radioTwo" class="radio">For delivery</label>
+          </div>
+        </div>
+        <button href="/" class="button">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
