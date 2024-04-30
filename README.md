@@ -1,0 +1,1 @@
+CAPSULE is an innovative web technology project designed to provide a seamless online pharmacy experience for purchasing tablets. With a user-friendly interface and robust backend infrastructure, CAPSULE simplifies the process of buying tablets from the comfort of your home.
