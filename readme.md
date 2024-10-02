@@ -25,6 +25,3 @@ CAPSULE is a web-based application that does not require any additional installa
 
 For support or inquiries, please reach out via email at [revanthrampal@gmail.com](mailto:revanthrampal@gmail.com).
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
