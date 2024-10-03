@@ -25,6 +25,7 @@ CAPSULE is a web-based application that does not require any additional installa
 
 For support or inquiries, please reach out via email at [revanthrampal@gmail.com](mailto:revanthrampal@gmail.com).
 
+<<<<<<< HEAD:readme.md
 ## Show Your Support
 
 If you find this project helpful, please give it a ⭐️! Your support is greatly appreciated.
@@ -32,3 +33,5 @@ If you find this project helpful, please give it a ⭐️! Your support is great
 ---
 
 Thank you for visiting our project! We hope you find it useful and consider contributing.
+=======
+>>>>>>> 838647f412a023c314f3d60bef294025371ac1a4:readme.txt
