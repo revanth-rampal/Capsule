@@ -9,6 +9,21 @@
 - **Secure Transactions**: Shop with confidence through our secure payment gateway, ensuring your personal information is protected.
 - **Real-Time Inventory Updates**: Stay informed about product availability and receive notifications for new arrivals and special offers.
 
+## Technologies Used
+<p align="left">
+<img src="https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge
+">
+    
+<img src="https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white&style=for-the-badge">
+
+ <img src="https://img.shields.io/badge/-Bootstrap-7952B3?logo=bootstrap&logoColor=white&style=for-the-badge">
+ 
+ <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E">
+ 
+ <img src="https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white&style=for-the-badge">
+<br>
+</p>
+
 ## Installation Instructions
 
 CAPSULE is a web-based application that does not require any additional installation. Simply access the platform through your web browser to begin using the service.
