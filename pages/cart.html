@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shopping Cart - Capsule Pharmacy">
+    <title>Shopping Cart - Capsule</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .cart-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--gray-300);
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .quantity-btn:hover {
+            background: var(--gray-100);
+            border-color: var(--primary);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+        }
+        
+        .remove-btn {
+            color: var(--error);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+        
+        .remove-btn:hover {
+            background: #fee2e2;
+        }
+        
+        .cart-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .summary-total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .empty-cart-icon {
+            font-size: 5rem;
+            color: var(--gray-300);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 1rem;">
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../assets/logo.png" alt="Capsule Logo">
+                    <span style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">Capsule</span>
+                </a>
+                
+                <ul class="navbar-nav" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li>
+                        <a href="cart.html" class="btn btn-primary" style="position: relative; padding: 0.5rem 1rem;">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="cart-badge badge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%); color: white; padding: 2rem 0;">
+        <div class="container">
+            <h1 style="color: white; margin-bottom: 0.5rem;">Shopping Cart</h1>
+            <p style="color: rgba(255,255,255,0.9);">Review your items before checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="section" style="background: var(--gray-50); padding-top: 3rem;">
+        <div class="cart-container">
+            <div style="display: grid; grid-template-columns: 1fr 350px; gap: 2rem;">
+                <!-- Cart Items -->
+                <div id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--gray-900);">Order Summary</h3>
+                    
+                    <div class="summary-row">
+                        <span style="color: var(--gray-600);">Subtotal</span>
+                        <span id="subtotal" style="font-weight: 600;">₹0</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span style="color: var(--gray-600);">Delivery Charges</span>
+                        <span id="delivery" style="font-weight: 600;">₹50</span>
+                    </div>
+                    
+                    <div class="summary-row" style="border-bottom: 2px solid var(--primary);">
+                        <span style="color: var(--gray-600);">Discount</span>
+                        <span id="discount" style="color: var(--accent-green); font-weight: 600;">-₹0</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <span class="summary-total">Total</span>
+                            <span class="summary-total" id="total">₹50</span>
+                        </div>
+                        
+                        <button id="checkoutBtn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.125rem;" disabled>
+                            <i class="bi bi-lock-fill"></i> Proceed to Checkout
+                        </button>
+                        
+                        <a href="products.html" class="btn btn-outline" style="width: 100%; margin-top: 1rem; text-align: center;">
+                            <i class="bi bi-arrow-left"></i> Continue Shopping
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-green); margin-bottom: 0.5rem;">
+                            <i class="bi bi-shield-check"></i>
+                            <small style="font-weight: 500;">Secure Checkout</small>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-600);">
+                            <i class="bi bi-truck"></i>
+                            <small>Free delivery on orders above ₹500</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Capsule</h4>
+                    <p style="color: var(--gray-400);">Capsule is one of India's most trusted pharmacies, dispensing quality medicines at reasonable prices to over 7 million happy customers – PAN India.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:revanthrampal@gmail.com">revanthrampal@gmail.com</a></li>
+                        <li style="color: var(--gray-400);">Customer Support: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capsule. All rights reserved. Made with <span style="color: #ef4444;">❤</span> by Team Black Code</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main App JS -->
+    <script src="../assets/js/app.js"></script>
+    
+    <script>
+        let cart = JSON.parse(localStorage.getItem('capsule_cart')) || [];
+        
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            
+            if (!cart || cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">
+                            <i class="bi bi-cart-x"></i>
+                        </div>
+                        <h3 style="color: var(--gray-700); margin-bottom: 1rem;">Your cart is empty</h3>
+                        <p style="color: var(--gray-600); margin-bottom: 2rem;">Add some products to get started!</p>
+                        <a href="products.html" class="btn btn-primary btn-lg">
+                            <i class="bi bi-shop"></i> Start Shopping
+                        </a>
+                    </div>
+                `;
+                updateSummary(0);
+                return;
+            }
+            
+            cartItemsContainer.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <img src="${item.image || '../assets/logo.png'}" alt="${item.name}" class="cart-item-image" onerror="this.src='../assets/logo.png'">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantityInput(${index}, this.value)">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-btn" onclick="removeItem(${index})">
+                                <i class="bi bi-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateSummary();
+        }
+        
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity < 1) {
+                cart[index].quantity = 1;
+            }
+            saveCart();
+            renderCart();
+        }
+        
+        function updateQuantityInput(index, value) {
+            const qty = parseInt(value);
+            if (qty > 0) {
+                cart[index].quantity = qty;
+                saveCart();
+                renderCart();
+            }
+        }
+        
+        function removeItem(index) {
+            cart.splice(index, 1);
+            saveCart();
+            renderCart();
+            if (window.CapsuleCart) {
+                window.CapsuleCart.remove(cart[index]?.id);
+            }
+        }
+        
+        function updateSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 500 ? 0 : 50;
+            const discount = subtotal >= 1000 ? subtotal * 0.1 : 0;
+            const total = subtotal + delivery - discount;
+            
+            document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('delivery').textContent = delivery === 0 ? 'FREE' : `₹${delivery}`;
+            document.getElementById('discount').textContent = discount > 0 ? `-₹${discount.toFixed(2)}` : '-₹0';
+            document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+            
+            document.getElementById('checkoutBtn').disabled = cart.length === 0;
+            
+            if (delivery === 0 && subtotal < 500) {
+                document.querySelector('.cart-summary').innerHTML += `
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: var(--radius-md); border-left: 4px solid var(--warning);">
+                        <small style="color: #92400e;">Add ₹${(500 - subtotal).toFixed(2)} more for FREE delivery!</small>
+                    </div>
+                `;
+            }
+        }
+        
+        function saveCart() {
+            localStorage.setItem('capsule_cart', JSON.stringify(cart));
+            if (window.CapsuleCart) {
+                window.CapsuleCart.updateCartBadge();
+            }
+        }
+        
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length > 0) {
+                window.location.href = 'checkout.html';
+            }
+        });
+        
+        // Initialize cart on page load
+        renderCart();
+    </script>
+</body>
+</html>
+

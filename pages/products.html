@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all products at Capsule - Medicines, health products, and wellness essentials">
+    <title>Products - Capsule | Buy Medicines Online</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .products-header {
+            background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            font-size: 1.125rem;
+        }
+        
+        .filter-item {
+            padding: 0.75rem;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .filter-item:hover {
+            background: var(--gray-100);
+        }
+        
+        .filter-item.active {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 1rem;">
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../assets/logo.png" alt="Capsule Logo">
+                    <span style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">Capsule</span>
+                </a>
+                
+                <!-- Search Bar -->
+                <div style="flex: 1; max-width: 500px; margin: 0 2rem;">
+                    <div class="search-bar" style="max-width: 100%;">
+                        <input type="text" id="searchInput" placeholder="Search for medicines..." onkeypress="if(event.key === 'Enter') performSearch()">
+                        <button type="button" onclick="performSearch()">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <ul class="navbar-nav" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li>
+                        <a href="cart.html" class="btn btn-primary" style="position: relative; padding: 0.5rem 1rem;">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="cart-badge badge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="products-header">
+        <div class="container">
+            <h1 style="color: white; margin-bottom: 0.5rem;">All Products</h1>
+            <p style="color: rgba(255,255,255,0.9);">Browse our complete range of medicines and health products</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem;">
+                <!-- Filter Sidebar -->
+                <div class="filter-sidebar" style="height: fit-content; position: sticky; top: 100px;">
+                    <div class="filter-title">Categories</div>
+                    <div class="filter-item active" onclick="filterCategory('all')">All Products</div>
+                    <div class="filter-item" onclick="filterCategory('cold')">Cold & Flu</div>
+                    <div class="filter-item" onclick="filterCategory('diabetes')">Diabetes Care</div>
+                    <div class="filter-item" onclick="filterCategory('eye')">Eye Care</div>
+                    <div class="filter-item" onclick="filterCategory('pain')">Pain Relief</div>
+                    <div class="filter-item" onclick="filterCategory('baby')">Baby Care</div>
+                    <div class="filter-item" onclick="filterCategory('measurements')">Health Monitoring</div>
+                    <div class="filter-item" onclick="filterCategory('ayurvedic')">Ayurvedic</div>
+                    <div class="filter-item" onclick="filterCategory('stomach')">Stomach Care</div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div>
+                    <div id="productsContainer" class="products-grid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Capsule</h4>
+                    <p style="color: var(--gray-400);">Capsule is one of India's most trusted pharmacies, dispensing quality medicines at reasonable prices to over 7 million happy customers – PAN India.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:revanthrampal@gmail.com">revanthrampal@gmail.com</a></li>
+                        <li style="color: var(--gray-400);">Customer Support: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capsule. All rights reserved. Made with <span style="color: #ef4444;">❤</span> by Team Black Code</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main App JS -->
+    <script src="../assets/js/app.js"></script>
+    
+    <script>
+        // Product data
+        const products = [
+            { id: 'amox-1', name: 'Amoxicillin CV 500mg', price: 112, oldPrice: 150, image: '../assets/images/tablets/cold/Amoxilin CV 500mg125mg Tablet.jpg', category: 'cold' },
+            { id: 'moov-1', name: 'Moov Pain Relief Spray', price: 145, oldPrice: 180, image: '../assets/images/tablets/pain/moov.jpg', category: 'pain' },
+            { id: 'accu-1', name: 'Accu-Chek Active Strips', price: 720, oldPrice: 850, image: '../assets/images/tablets/Diabetes Care/accu-chek-active-100-strip-500x500.jpg', category: 'diabetes' },
+            { id: 'eye-1', name: 'Ontears Eye Drop', price: 185, image: '../assets/images/tablets/eye care/Ontears.jpeg', category: 'eye' },
+            { id: 'zandu-1', name: 'Zandu Balm', price: 85, image: '../assets/images/tablets/pain/zandu balm.jpg', category: 'pain' },
+            { id: 'gluc-1', name: 'Glucoryl M Tablet', price: 245, image: '../assets/images/tablets/Diabetes Care/Glucoryl-M-1-Tablet-PR.jpg', category: 'diabetes' },
+            { id: 'aqualens-1', name: 'Aqualens Contact Lens Solution', price: 120, image: '../assets/images/tablets/eye care/Aqualens Comfort Contact Lens Solution.webp', category: 'eye' },
+            { id: 'baby-1', name: 'Baby Care Product', price: 250, image: '../assets/images/tablets/babycare/b1.jpg', category: 'baby' },
+            { id: 'therm-1', name: 'Digital Thermometer', price: 199, image: '../assets/images/tablets/mesurements/therm.jpeg', category: 'measurements' },
+            { id: 'omez-1', name: 'Omez Capsule', price: 65, image: '../assets/images/tablets/gas/OMEZ0002_L.jpg', category: 'stomach' },
+            { id: 'cz3-1', name: 'Cough Syrup CZ3', price: 95, image: '../assets/images/tablets/cold/cz3.jpeg', category: 'cold' },
+            { id: 'ortho-1', name: 'Ortho Cream', price: 125, image: '../assets/images/tablets/pain/ortho.jpg', category: 'pain' }
+        ];
+        
+        let currentCategory = 'all';
+        
+        function renderProducts(productsToShow) {
+            const container = document.getElementById('productsContainer');
+            if (!container) return;
+            
+            container.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'">
+                    <div class="product-info">
+                        <h5 class="product-name">${product.name}</h5>
+                        <div class="product-price">
+                            ${product.oldPrice ? `<span class="product-price-old">₹${product.oldPrice}</span>` : ''}
+                            ₹${product.price}
+                        </div>
+                        ${product.oldPrice ? `<small style="color: var(--accent-green); display: block; margin-bottom: 0.5rem; font-weight: 600;">${Math.round((1 - product.price/product.oldPrice) * 100)}% OFF</small>` : ''}
+                        <button class="btn btn-primary" data-add-to-cart data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}" style="width: 100%;">
+                            <i class="bi bi-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Re-initialize cart buttons
+            if (window.CapsuleCart) {
+                document.querySelectorAll('[data-add-to-cart]').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-product-id');
+                        const productName = this.getAttribute('data-product-name');
+                        const productPrice = this.getAttribute('data-product-price');
+                        window.CapsuleCart.add({
+                            id: productId,
+                            name: productName,
+                            price: parseFloat(productPrice),
+                            quantity: 1
+                        });
+                    });
+                });
+            }
+        }
+        
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            // Update filter UI
+            document.querySelectorAll('.filter-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event?.target?.classList.add('active');
+            
+            // Filter products
+            const filtered = category === 'all' 
+                ? products 
+                : products.filter(p => p.category === category);
+            
+            renderProducts(filtered);
+        }
+        
+        function performSearch() {
+            const query = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+        
+        // Check URL parameters
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            const search = urlParams.get('search');
+            
+            if (search) {
+                document.getElementById('searchInput').value = search;
+                performSearch();
+            } else if (category) {
+                filterCategory(category);
+            } else {
+                renderProducts(products);
+            }
+        });
+    </script>
+</body>
+</html>

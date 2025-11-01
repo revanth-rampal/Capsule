@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your Capsule account - Join India's trusted online pharmacy">
+    <title>Sign Up - Capsule</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    
+    <style>
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+            padding: 2rem;
+        }
+        
+        .register-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            max-width: 500px;
+            width: 100%;
+            padding: 3rem;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .register-header img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .register-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .register-header p {
+            color: var(--gray-600);
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        
+        .form-input {
+            padding-left: 3rem;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 0.875rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-link {
+            text-align: center;
+            color: var(--gray-600);
+        }
+        
+        .login-link a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <img src="../assets/logo.png" alt="Capsule Logo">
+                <h1>Create Account</h1>
+                <p>Join Capsule today and get started</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+            
+            <form id="registerForm" action="../assets/php/registration.php" method="POST">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-person"></i>
+                        <input type="text" class="form-input" id="username" name="uname" placeholder="Choose a username" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Aadhaar ID</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-credit-card"></i>
+                        <input type="text" class="form-input" id="aadhaar" name="id" placeholder="Enter your Aadhaar ID" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Contact Number</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-telephone"></i>
+                        <input type="tel" class="form-input" id="contact" name="contact" placeholder="Enter your mobile number" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Create a password" required>
+                    </div>
+                    <small style="color: var(--gray-500); font-size: 0.875rem;">Must be at least 8 characters with uppercase and lowercase letters</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <i class="bi bi-lock-fill"></i>
+                        <input type="password" class="form-input" id="confirmPassword" name="confirm_password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <i class="bi bi-person-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const aadhaar = document.getElementById('aadhaar').value.trim();
+            const contact = document.getElementById('contact').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Validation
+            if (!username || !aadhaar || !contact || !password || !confirmPassword) {
+                errorMessage.textContent = 'Please fill in all fields';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (password.length < 8) {
+                errorMessage.textContent = 'Password must be at least 8 characters long';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (!/[A-Z]/.test(password)) {
+                errorMessage.textContent = 'Password must contain at least one uppercase letter';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (!/[a-z]/.test(password)) {
+                errorMessage.textContent = 'Password must contain at least one lowercase letter';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Passwords do not match';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // If validation passes, submit the form
+            this.submit();
+        });
+    </script>
+</body>
+</html>
+

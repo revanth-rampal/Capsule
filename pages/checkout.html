@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkout - Capsule Pharmacy">
+    <title>Checkout - Capsule</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .checkout-form {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .order-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .order-item-name {
+            color: var(--gray-700);
+            font-size: 0.9375rem;
+        }
+        
+        .order-item-price {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+        
+        .payment-method input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: #fff7ed;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 1rem;">
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../assets/logo.png" alt="Capsule Logo">
+                    <span style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">Capsule</span>
+                </a>
+                
+                <ul class="navbar-nav" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li>
+                        <a href="cart.html" class="btn btn-primary" style="position: relative; padding: 0.5rem 1rem;">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="cart-badge badge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%); color: white; padding: 2rem 0;">
+        <div class="container">
+            <h1 style="color: white; margin-bottom: 0.5rem;">Checkout</h1>
+            <p style="color: rgba(255,255,255,0.9);">Complete your order securely</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="section" style="background: var(--gray-50); padding-top: 3rem;">
+        <div class="checkout-container">
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h2 style="color: var(--gray-900); margin-bottom: 1rem;">Order Placed Successfully!</h2>
+                <p style="color: var(--gray-600); margin-bottom: 2rem;">Thank you for your order. We'll send you a confirmation email shortly.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="../index.html" class="btn btn-primary">
+                        <i class="bi bi-house"></i> Go Home
+                    </a>
+                    <a href="products.html" class="btn btn-outline">
+                        <i class="bi bi-shop"></i> Continue Shopping
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Checkout Form -->
+            <div id="checkoutForm">
+                <div style="display: grid; grid-template-columns: 1fr 400px; gap: 2rem;">
+                    <!-- Left: Form -->
+                    <div>
+                        <!-- Delivery Address -->
+                        <div class="checkout-form">
+                            <div class="section-title">
+                                <i class="bi bi-geo-alt"></i> Delivery Address
+                            </div>
+                            <form id="addressForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name *</label>
+                                        <input type="text" class="form-input" name="fullName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-input" name="phone" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Address Line 1 *</label>
+                                    <input type="text" class="form-input" name="address1" placeholder="House/Flat No., Building Name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Address Line 2</label>
+                                    <input type="text" class="form-input" name="address2" placeholder="Street, Area, Locality">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">City *</label>
+                                        <input type="text" class="form-input" name="city" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">State *</label>
+                                        <input type="text" class="form-input" name="state" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Pincode *</label>
+                                        <input type="text" class="form-input" name="pincode" pattern="[0-9]{6}" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Payment Method -->
+                        <div class="checkout-form">
+                            <div class="section-title">
+                                <i class="bi bi-credit-card"></i> Payment Method
+                            </div>
+                            
+                            <div class="payment-method" onclick="selectPayment('cod')">
+                                <input type="radio" name="payment" id="cod" value="cod" checked>
+                                <label for="cod" style="flex: 1; cursor: pointer;">
+                                    <div style="font-weight: 600; color: var(--gray-900);">Cash on Delivery</div>
+                                    <small style="color: var(--gray-600);">Pay when you receive</small>
+                                </label>
+                                <i class="bi bi-wallet2" style="font-size: 1.5rem; color: var(--primary);"></i>
+                            </div>
+                            
+                            <div class="payment-method" onclick="selectPayment('card')">
+                                <input type="radio" name="payment" id="card" value="card">
+                                <label for="card" style="flex: 1; cursor: pointer;">
+                                    <div style="font-weight: 600; color: var(--gray-900);">Credit/Debit Card</div>
+                                    <small style="color: var(--gray-600);">Secure payment gateway</small>
+                                </label>
+                                <i class="bi bi-credit-card" style="font-size: 1.5rem; color: var(--gray-400);"></i>
+                            </div>
+                            
+                            <div class="payment-method" onclick="selectPayment('upi')">
+                                <input type="radio" name="payment" id="upi" value="upi">
+                                <label for="upi" style="flex: 1; cursor: pointer;">
+                                    <div style="font-weight: 600; color: var(--gray-900);">UPI</div>
+                                    <small style="color: var(--gray-600);">Google Pay, PhonePe, Paytm</small>
+                                </label>
+                                <i class="bi bi-phone" style="font-size: 1.5rem; color: var(--gray-400);"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Order Summary -->
+                    <div class="order-summary">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--gray-900);">Order Summary</h3>
+                        
+                        <div id="orderItems" style="max-height: 300px; overflow-y: auto; margin-bottom: 1.5rem;">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        
+                        <div style="padding-top: 1rem; border-top: 2px solid var(--gray-200);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <span style="color: var(--gray-600);">Subtotal</span>
+                                <span id="orderSubtotal" style="font-weight: 600;">₹0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <span style="color: var(--gray-600);">Delivery</span>
+                                <span id="orderDelivery" style="font-weight: 600;">₹50</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span style="color: var(--gray-600);">Discount</span>
+                                <span id="orderDiscount" style="color: var(--accent-green); font-weight: 600;">-₹0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 2px solid var(--primary); margin-bottom: 1.5rem;">
+                                <span style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900);">Total</span>
+                                <span style="font-size: 1.25rem; font-weight: 700; color: var(--primary);" id="orderTotal">₹50</span>
+                            </div>
+                            
+                            <button id="placeOrderBtn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.125rem;">
+                                <i class="bi bi-lock-fill"></i> Place Order
+                            </button>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-green); margin-bottom: 0.5rem;">
+                                <i class="bi bi-shield-check"></i>
+                                <small style="font-weight: 500;">Secure & Encrypted</small>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-600);">
+                                <i class="bi bi-truck"></i>
+                                <small>Estimated delivery: 2-3 days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Capsule</h4>
+                    <p style="color: var(--gray-400);">Capsule is one of India's most trusted pharmacies, dispensing quality medicines at reasonable prices to over 7 million happy customers – PAN India.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:revanthrampal@gmail.com">revanthrampal@gmail.com</a></li>
+                        <li style="color: var(--gray-400);">Customer Support: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capsule. All rights reserved. Made with <span style="color: #ef4444;">❤</span> by Team Black Code</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main App JS -->
+    <script src="../assets/js/app.js"></script>
+    
+    <script>
+        let cart = JSON.parse(localStorage.getItem('capsule_cart')) || [];
+        
+        function renderOrderItems() {
+            const orderItemsContainer = document.getElementById('orderItems');
+            
+            if (!cart || cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+            
+            orderItemsContainer.innerHTML = cart.map(item => `
+                <div class="order-item">
+                    <div>
+                        <div class="order-item-name">${item.name} × ${item.quantity}</div>
+                        <small style="color: var(--gray-500);">₹${item.price} each</small>
+                    </div>
+                    <div class="order-item-price">₹${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+            
+            updateOrderSummary();
+        }
+        
+        function updateOrderSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 500 ? 0 : 50;
+            const discount = subtotal >= 1000 ? subtotal * 0.1 : 0;
+            const total = subtotal + delivery - discount;
+            
+            document.getElementById('orderSubtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('orderDelivery').textContent = delivery === 0 ? 'FREE' : `₹${delivery}`;
+            document.getElementById('orderDiscount').textContent = discount > 0 ? `-₹${discount.toFixed(2)}` : '-₹0';
+            document.getElementById('orderTotal').textContent = `₹${total.toFixed(2)}`;
+        }
+        
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            document.getElementById(method).checked = true;
+        }
+        
+        document.getElementById('placeOrderBtn').addEventListener('click', function() {
+            const form = document.getElementById('addressForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            const formData = new FormData(form);
+            const address = Object.fromEntries(formData);
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            // Simulate order placement
+            setTimeout(() => {
+                // Clear cart
+                localStorage.removeItem('capsule_cart');
+                cart = [];
+                
+                // Show success message
+                document.getElementById('checkoutForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Update cart badge
+                if (window.CapsuleCart) {
+                    window.CapsuleCart.clear();
+                }
+            }, 1000);
+        });
+        
+        // Initialize
+        renderOrderItems();
+        
+        // Set default payment method
+        selectPayment('cod');
+        document.querySelector('.payment-method').classList.add('selected');
+    </script>
+</body>
+</html>
+

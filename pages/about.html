@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Capsule - India's trusted online pharmacy">
+    <title>About Us - Capsule</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar-modern">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 1rem;">
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../assets/logo.png" alt="Capsule Logo">
+                    <span style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">Capsule</span>
+                </a>
+                
+                <!-- Search Bar -->
+                <div style="flex: 1; max-width: 500px; margin: 0 2rem;">
+                    <div class="search-bar" style="max-width: 100%;">
+                        <input type="text" placeholder="Search for medicines..." onkeypress="if(event.key === 'Enter') window.location.href='products.html?search='+this.value">
+                        <button type="button" onclick="window.location.href='products.html'">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <ul class="navbar-nav" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li>
+                        <a href="cart.html" class="btn btn-primary" style="position: relative; padding: 0.5rem 1rem;">
+                            <i class="bi bi-cart3"></i> Cart
+                            <span class="cart-badge badge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="padding: 4rem 0;">
+        <div class="hero-content container">
+            <h1>About Capsule</h1>
+            <p>Your trusted partner in healthcare</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <img src="../assets/logo.png" alt="Capsule Logo" style="width: 150px; height: 150px; margin-bottom: 2rem;">
+                </div>
+                
+                <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary);">Who We Are</h2>
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 2rem; text-align: center;">
+                    Capsule is one of India's most trusted pharmacies, dispensing quality medicines at reasonable prices to over 7 million happy customers – PAN India. We are committed to making healthcare accessible, affordable, and convenient for everyone.
+                </p>
+                
+                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 3rem; text-align: center;">
+                    Our mission is to provide authentic medicines, health products, and wellness essentials with fast and reliable delivery. We understand the importance of health and strive to make your healthcare journey as smooth as possible.
+                </p>
+
+                <h2 style="text-align: center; margin: 3rem 0 2rem; color: var(--primary);">Why Choose Capsule?</h2>
+                
+                <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-top: 2rem;">
+                    <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200);">
+                        <div class="category-icon" style="background: linear-gradient(135deg, #14a085, #0d7377);">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4>100% Authentic</h4>
+                        <p style="color: var(--gray-600);">All medicines are verified and sourced from licensed pharmacies</p>
+                    </div>
+                    
+                    <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200);">
+                        <div class="category-icon" style="background: linear-gradient(135deg, #ff6f00, #ff8f00);">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h4>Fast Delivery</h4>
+                        <p style="color: var(--gray-600);">Quick and secure delivery across India</p>
+                    </div>
+                    
+                    <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200);">
+                        <div class="category-icon" style="background: linear-gradient(135deg, #ff6f00, #ff8f00);">
+                            <i class="bi bi-currency-rupee"></i>
+                        </div>
+                        <h4>Best Prices</h4>
+                        <p style="color: var(--gray-600);">Competitive prices on all products with regular offers</p>
+                    </div>
+                    
+                    <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200);">
+                        <div class="category-icon" style="background: linear-gradient(135deg, #14a085, #0d7377);">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p style="color: var(--gray-600);">Expert customer care always available to assist you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet the people behind Capsule</p>
+            </div>
+            
+            <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 1000px; margin: 0 auto;">
+                <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200); padding: 2rem; text-align: center;">
+                    <div style="width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden; border: 4px solid var(--primary); box-shadow: var(--shadow-lg);">
+                        <img src="../assets/about/rev.png" alt="Revanth D Rampal" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">Revanth D Rampal</h4>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">Founder & Developer</p>
+                    <p style="color: var(--gray-600); font-size: 0.9375rem; line-height: 1.6;">
+                        HEY GUYS!! I Am Revanth Rampal. CAPSULE was created to address the growing need for an efficient, reliable, and user-friendly online pharmacy.
+                    </p>
+                </div>
+                
+                <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200); padding: 2rem; text-align: center;">
+                    <div style="width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden; border: 4px solid var(--primary); box-shadow: var(--shadow-lg);">
+                        <img src="../assets/about/vin.png" alt="H. Vinod Kumar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">H. Vinod Kumar</h4>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">Developer</p>
+                    <p style="color: var(--gray-600); font-size: 0.9375rem; line-height: 1.6;">
+                        Hi guys, I'm Vinod. At Capsule our mission is to make healthcare accessible and convenient for everyone through technology.
+                    </p>
+                </div>
+                
+                <div class="category-card" style="background: var(--white); border: 2px solid var(--gray-200); padding: 2rem; text-align: center;">
+                    <div style="width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden; border: 4px solid var(--primary); box-shadow: var(--shadow-lg);">
+                        <img src="../assets/about/sri.png" alt="M Jhansi Sreenivas" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h4 style="color: var(--gray-900); margin-bottom: 0.5rem;">M Jhansi Sreenivas</h4>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 1rem;">Developer</p>
+                    <p style="color: var(--gray-600); font-size: 0.9375rem; line-height: 1.6;">
+                        Hi guys, I'm Sreenivas and I'm excited to introduce you to CAPSULE, a groundbreaking platform designed to simplify the way you access medication.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2 style="margin-bottom: 1rem; color: var(--primary);">Get in Touch</h2>
+                <p style="font-size: 1.125rem; color: var(--gray-600); margin-bottom: 2rem;">
+                    Have questions or need assistance? We're here to help!
+                </p>
+                <a href="mailto:revanthrampal@gmail.com" class="btn btn-primary btn-lg">
+                    <i class="bi bi-envelope"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Capsule</h4>
+                    <p style="color: var(--gray-400);">Capsule is one of India's most trusted pharmacies, dispensing quality medicines at reasonable prices to over 7 million happy customers – PAN India.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:revanthrampal@gmail.com">revanthrampal@gmail.com</a></li>
+                        <li style="color: var(--gray-400);">Customer Support: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Capsule. All rights reserved. Made with <span style="color: #ef4444;">❤</span> by Team Black Code</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main App JS -->
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
